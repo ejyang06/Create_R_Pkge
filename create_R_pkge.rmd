@@ -1,0 +1,62 @@
+---
+output: html_document
+---
+
+By Elva Yang
+Begin Date:9/22/2016
+End Date:
+
+Objective: Tutorial-Creating a R package
+Data Source: NA
+
+
+```{r}
+####### step0: Install your package #################
+install.packages("devtools")
+library(devtools)
+find_rtools() # rtools only needed if you use window
+#library(rtools)
+#install.packages("Rtools")
+#install.packages("xtable", type="source")
+devtools::install_github("klutometis/roxygen")
+
+####### step1: Create your pkge directory ###########
+setwd("C:/Users/L103295/Desktop/GitHub/Create_R_Pkge")
+getwd()
+dir.create("parent_directory")
+setwd("C:/Users/L103295/Desktop/GitHub/Create_R_Pkge/parent_directory")
+create("sharedobe")
+
+####### step2: Add function ###########
+#copy and paste this to other R script file
+#sharedobe_func<-function(love=TRUE) {
+#  if(love==TRUE){
+#    print("Sharedobe loves you too!")
+#  }
+#  else {
+#    print("Do you have carrots?")
+#  }
+#  
+#}
+
+###### step3: Add documentation ###########
+
+##### Step 4: Process your documentation #####
+install.packages("crayon")
+library("crayon")
+setwd("./sharedobe")
+document()
+
+##### Step 5: Install #####
+setwd("..")
+install("sharedobe")
+
+library(sharedobe)
+sharedobe_func(TRUE)
+sharedobe_func(FALSE)
+
+#### Step 6: Make the package a GitHub repo #####
+install_github('sharedobe','ejyang06')
+
+```
+
